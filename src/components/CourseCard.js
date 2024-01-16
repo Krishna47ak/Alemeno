@@ -9,11 +9,11 @@ import { Link } from "react-router-dom";
 
 const CourseCard = ({ id, img, name, description }) => {
     return (
-        <Card className="w-full max-w-[48rem] flex-row">
+        <Card className="w-full md:flex-row">
             <CardHeader
                 shadow={false}
                 floated={false}
-                className="m-0 w-2/5 shrink-0 rounded-r-none"
+                className="m-0 md:w-2/5 shrink-0 rounded-b-none md:rounded-r-none"
             >
                 <img
                     src={img}
@@ -25,7 +25,7 @@ const CourseCard = ({ id, img, name, description }) => {
                 <Typography variant="h4" color="blue-gray" className="mb-2">
                     {name}
                 </Typography>
-                <Typography color="gray" className="mb-8 font-normal">
+                <Typography color="gray" className="mb-3 md:mb-8 font-normal">
                     {description}
                 </Typography>
                 <Link to={`/${id}`} className="inline-block">

@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div className='bg-black text-white min-h-screen' >
             <NavbarHeader value={searchText} onChange={setSearchtext} />
-            <div className="grid grid-cols-2 gap-7 p-16" >
+            <div className="grid lg:grid-cols-2 gap-y-7 lg:gap-7 p-10 md:p-16" >
                 {courses?.map((course) => (
                     <CourseCard key={course?.id} id={course?.id} img={course?.thumbnail} name={course?.name} description={course?.description} />
                 ))}

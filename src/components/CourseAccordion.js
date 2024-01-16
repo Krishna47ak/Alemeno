@@ -18,7 +18,7 @@ const CourseAccordion = ({ syllabus }) => {
     return (
         <>
             {syllabus?.map((part, i) => (
-                <Accordion open={open === i+1} animate={CUSTOM_ANIMATION}>
+                <Accordion key={part?.topic} open={open === i+1} animate={CUSTOM_ANIMATION}>
                     <AccordionHeader onClick={() => handleOpen(i+1)}>{part?.topic}</AccordionHeader>
                     <AccordionBody>
                         {part?.content}
