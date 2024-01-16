@@ -6,15 +6,14 @@ import { markCourseComplete } from '../store/actions/courses'
 
 const Dashboard = () => {
     const enrolledCourses = useSelector(state => state?.courses?.enrolledCourses)
-    console.log(enrolledCourses);
     const dispatch = useDispatch();
 
     return (
-        <div className='relative bg-black text-white min-h-screen px-32 py-20 text-center' >
+        <div className='relative bg-black text-white min-h-screen lg:px-32 py-20 text-center' >
             <Link to="/" className='fixed left-7 top-7 bg-white hover:bg-gray-400 p-2 px-5 text-black rounded-l-full select-none cursor-pointer z-50' >Go Back</Link>
-            <div className='text-5xl font-semibold mb-10' >Enrolled Courses:</div>
+            <div className='text-xl md:text-5xl font-semibold mb-10 mt-5 md:mt-0' >Enrolled Courses:</div>
             {enrolledCourses?.map((course, i) => (
-                <div key={course?.id} className='bg-gray-800 mb-5 mx-20 pb-5 rounded-xl overflow-hidden' >
+                <div key={course?.id} className='bg-gray-800 mb-5 mx-7 md:mx-20 pb-5 rounded-xl overflow-hidden' >
                     <Progress value={30 + i * 20} color="blue" label="Completed" />
                     <img
                         src={course?.thumbnail}

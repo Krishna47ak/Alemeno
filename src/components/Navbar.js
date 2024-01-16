@@ -25,11 +25,11 @@ const NavbarHeader = ({ value, onChange }) => {
                 <div className="ml-auto md:mr-4">
                     <Link to="/dashboard" className="text-lg select-none hover:bg-blue-gray-600 p-[0.4rem] px-3 rounded-md cursor-pointer" >Dashboard</Link>
                 </div>
-                <div className="relative flex w-full gap-2 md:w-max">
+                <div className="relative flex w-full mr-3 gap-2 md:w-max">
                     <Input
                         type="search"
                         color="white"
-                        label="Search here..."
+                        label="Search - Course, Instructor..."
                         className="pr-24"
                         containerProps={{
                             className: "min-w-[288px]",
@@ -37,13 +37,13 @@ const NavbarHeader = ({ value, onChange }) => {
                         value={value}
                         onChange={e => onChange(e.target.value)}
                     />
-                    <Button
+                    {/* <Button
                         size="sm"
                         color="white"
                         className="!absolute right-1 top-1 rounded"
                     >
                         Search
-                    </Button>
+                    </Button> */}
                 </div>
             </div>
         </Navbar>
