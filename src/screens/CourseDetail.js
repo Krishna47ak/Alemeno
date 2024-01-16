@@ -9,6 +9,7 @@ import {
     Tooltip,
     Button,
     Chip,
+    Rating,
 } from "@material-tailwind/react";
 import CourseAccordion from '../components/CourseAccordion';
 import { enrollCourse } from '../store/actions/courses';
@@ -38,6 +39,12 @@ const CourseDetail = () => {
                     alt="ui/ux review check"
                     className='object-cover object-top h-[30vh] md:h-[50vh]'
                 />
+                {course?.rating && (
+
+                <div className='absolute right-5 md:right-10 top-5' >
+                    <Rating value={Math.trunc(course?.rating)} readonly />
+                </div>
+                )}
                 <CardBody className='md:p-10' >
                     <Typography variant="h4" color="blue-gray">
                         {course?.name || ''}

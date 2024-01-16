@@ -15,6 +15,7 @@ export const fetchCourses = () => async dispatch => {
 export const enrollCourse = (course) => async dispatch => {
     try {
         dispatch({ type: ENROLL_COURSE, payload: course })
+        alert(`You have been enrolled for "${course?.name}"`)
     } catch (err) {
         dispatch({ type: FETCH_ERROR })
         const errors = err?.response?.data?.error
