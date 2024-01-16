@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import store from "./store/store";
 import Home from "./screens/Home";
 import CourseDetail from "./screens/CourseDetail";
+import Dashboard from "./screens/Dashboard";
 
 
 const appRouter = createBrowserRouter([
@@ -14,6 +15,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/:id",
     element: <CourseDetail />
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />
   },
 ])
 

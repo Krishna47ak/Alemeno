@@ -1,4 +1,4 @@
-import { ENROLL_COURSE, FETCH_COURSES, FETCH_ERROR } from "../types"
+import { COURSE_COMPLETE, ENROLL_COURSE, FETCH_COURSES, FETCH_ERROR } from "../types"
 
 const initialState = {
     loading: true,
@@ -17,10 +17,19 @@ export default function (state = initialState, action) {
                 courses: payload
             }
         case ENROLL_COURSE:
+            if (state.enrolledCourses.find((course) => course.id == action.payload.id)) {
+                return state
+            }
             return {
                 ...state,
                 loading: false,
-                enrolledCourses: [...state.enrolledCourses, { ...action.payload }]
+                enrolledCourses: [...state.enrolledCourses, { ...action.payload, completed: false }]
+            }
+        case COURSE_COMPLETE:
+            return {
+                ...state,
+                loading: false,
+                enrolledCourses: state.enrolledCourses?.map((course) => course.id === action.payload ? { ...course, completed: true } : course)
             }
         case FETCH_ERROR:
             return {

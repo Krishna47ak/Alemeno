@@ -4,6 +4,7 @@ import {
     Button,
     Input,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const NavbarHeader = ({ value, onChange }) => {
     return (
@@ -22,7 +23,7 @@ const NavbarHeader = ({ value, onChange }) => {
                     ALEMENO
                 </Typography>
                 <div className="ml-auto md:mr-4">
-                    <div className="text-lg select-none hover:bg-blue-gray-600 p-[0.4rem] px-3 rounded-md cursor-pointer" >Dashboard</div>
+                    <Link to="/dashboard" className="text-lg select-none hover:bg-blue-gray-600 p-[0.4rem] px-3 rounded-md cursor-pointer" >Dashboard</Link>
                 </div>
                 <div className="relative flex w-full gap-2 md:w-max">
                     <Input

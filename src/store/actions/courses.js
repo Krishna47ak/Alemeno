@@ -1,5 +1,5 @@
 import alemenoApi from '../../api/alemenoApi'
-import { ENROLL_COURSE, FETCH_COURSES, FETCH_ERROR } from '../types'
+import { COURSE_COMPLETE, ENROLL_COURSE, FETCH_COURSES, FETCH_ERROR } from '../types'
 
 export const fetchCourses = () => async dispatch => {
     try {
@@ -15,6 +15,16 @@ export const fetchCourses = () => async dispatch => {
 export const enrollCourse = (course) => async dispatch => {
     try {
         dispatch({ type: ENROLL_COURSE, payload: course })
+    } catch (err) {
+        dispatch({ type: FETCH_ERROR })
+        const errors = err?.response?.data?.error
+        console.error(errors);
+    }
+}
+
+export const markCourseComplete = (id) => async dispatch => {
+    try {
+        dispatch({ type: COURSE_COMPLETE, payload: id })
     } catch (err) {
         dispatch({ type: FETCH_ERROR })
         const errors = err?.response?.data?.error
