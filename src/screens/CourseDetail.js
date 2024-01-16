@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import {
     Card,
-    CardHeader,
     CardBody,
     CardFooter,
     Typography,
@@ -12,10 +11,12 @@ import {
     Chip,
 } from "@material-tailwind/react";
 import CourseAccordion from '../components/CourseAccordion';
+import { enrollCourse } from '../store/actions/courses';
 
 
 const CourseDetail = () => {
     const { id } = useParams();
+    const dispatch = useDispatch();
     const courses = useSelector(state => state?.courses?.courses)
 
     const [course, setCourse] = useState([])
@@ -71,7 +72,7 @@ const CourseDetail = () => {
                     <CourseAccordion syllabus={course?.syllabus} />
                 </div>
                 {course?.enrollmentStatus != "Closed" && (
-                    <Button className='w-fit mx-auto' size='lg' >Enroll Now</Button>
+                    <Button onClick={() => dispatch(enrollCourse(course))} className='w-fit mx-auto' size='lg' >Enroll Now</Button>
                 )}
             </Card>
         </div>

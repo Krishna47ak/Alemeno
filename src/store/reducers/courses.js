@@ -1,8 +1,9 @@
-import { FETCH_COURSES, FETCH_ERROR } from "../types"
+import { ENROLL_COURSE, FETCH_COURSES, FETCH_ERROR } from "../types"
 
 const initialState = {
     loading: true,
-    courses: []
+    courses: [],
+    enrolledCourses: []
 }
 
 export default function (state = initialState, action) {
@@ -14,6 +15,12 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 courses: payload
+            }
+        case ENROLL_COURSE:
+            return {
+                ...state,
+                loading: false,
+                enrolledCourses: [...state.enrolledCourses, { ...action.payload }]
             }
         case FETCH_ERROR:
             return {
