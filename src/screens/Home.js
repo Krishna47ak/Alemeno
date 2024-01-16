@@ -2,10 +2,11 @@ import { useEffect, useState } from "react"
 import { useSelector } from 'react-redux'
 import NavbarHeader from "../components/Navbar"
 import CourseCard from "../components/CourseCard"
+import { Spinner } from "@material-tailwind/react"
 
 
 const Home = () => {
-    const courses = useSelector(state => state?.courses?.courses)
+    const { courses, loading } = useSelector(state => state?.courses)
     const [searchText, setSearchtext] = useState("")
     const [searchData, setSearchData] = useState(courses)
 
@@ -15,7 +16,6 @@ const Home = () => {
         ))
         return filteredData
     }
-
 
     useEffect(() => {
         if (searchText) {
@@ -30,11 +30,16 @@ const Home = () => {
     return (
         <div className='bg-black text-white min-h-screen' >
             <NavbarHeader value={searchText} onChange={setSearchtext} />
-            <div className="grid lg:grid-cols-2 gap-y-7 lg:gap-7 p-10 md:p-16" >
-                {searchData?.map((course) => (
-                    <CourseCard key={course?.id} id={course?.id} img={course?.thumbnail} name={course?.name} description={course?.description} />
-                ))}
-            </div>
+            {loading ? (
+                <div className="flex h-[85vh] justify-center items-center" >
+                    <Spinner className="h-20 w-20" color="blue" />
+                </div>
+            ) :
+                <div className="grid lg:grid-cols-2 gap-y-7 lg:gap-7 p-10 md:p-16" >
+                    {searchData?.map((course) => (
+                        <CourseCard key={course?.id} id={course?.id} img={course?.thumbnail} name={course?.name} description={course?.description} />
+                    ))}
+                </div>}
         </div>
     )
 }
